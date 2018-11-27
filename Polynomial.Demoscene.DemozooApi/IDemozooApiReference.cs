@@ -2,7 +2,7 @@
 
 namespace Polynomial.Demoscene.DemozooApi
 {
-    interface IApiReference
+    interface IDemozooApiReference
     {
         [DeserializeAs(Name = "url")]
         string ApiUrl { get; }

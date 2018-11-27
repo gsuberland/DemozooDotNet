@@ -2,12 +2,12 @@
 
 namespace Polynomial.Demoscene.DemozooApi
 {
-    class ReleaserReference : IApiReference
+    class ReleaserReference : IDemozooApiReference
     {
         [DeserializeAs(Name = "url")]
         public string ApiUrl { get; private set; }
 
-        public Releaser Releaser { get { return DemozooApi.Dereference<Releaser>(this); } }
+        public Releaser Releaser => DemozooApi.Dereference<Releaser>(this);
 
         public long ID { get; private set; }
 
