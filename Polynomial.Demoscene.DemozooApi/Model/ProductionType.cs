@@ -8,7 +8,9 @@ namespace Polynomial.Demoscene.DemozooApi.Model
         public string ApiUrl { get; private set; }
 
         public long ID { get; private set; }
+
         public string Name { get; private set; }
+
         public string Supertype { get; private set; }
     }
 }

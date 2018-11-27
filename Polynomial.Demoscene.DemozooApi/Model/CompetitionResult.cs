@@ -1,6 +1,8 @@
-﻿namespace Polynomial.Demoscene.DemozooApi.Model
+﻿using RestSharp.Deserializers;
+
+namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class CompetitionPlacing
+    class CompetitionResult
     {
         public long Position { get; private set; }
 
@@ -8,6 +10,6 @@
 
         public string Score { get; private set; }
 
-        public CompetitionReference Competition { get; private set; }
+        public Production Production { get; set; }
     }
 }
