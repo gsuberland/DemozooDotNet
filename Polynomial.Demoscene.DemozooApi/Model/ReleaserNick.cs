@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using RestSharp.Deserializers;
 
-namespace Polynomial.Demoscene.DemozooApi
+namespace Polynomial.Demoscene.DemozooApi.Model
 {
     class ReleaserNick
     {

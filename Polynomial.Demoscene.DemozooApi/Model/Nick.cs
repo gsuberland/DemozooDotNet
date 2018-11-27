@@ -1,4 +1,4 @@
-﻿namespace Polynomial.Demoscene.DemozooApi
+﻿namespace Polynomial.Demoscene.DemozooApi.Model
 {
     class Nick
     {
