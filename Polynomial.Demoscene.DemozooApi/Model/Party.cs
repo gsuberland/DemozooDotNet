@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RestSharp.Deserializers;
 
 namespace Polynomial.Demoscene.DemozooApi.Model
@@ -16,5 +17,30 @@ namespace Polynomial.Demoscene.DemozooApi.Model
         
         [DeserializeAs(Name = "party_series")]
         public PartySeriesReference PartySeries { get; private set; }
+
+        [DeserializeAs(Name = "start_date")]
+        public DateTime StartDate { get; private set; }
+
+        [DeserializeAs(Name = "end_date")]
+        public DateTime EndDate { get; private set; }
+
+        public string Location { get; private set; }
+
+        public bool IsOnline { get; private set; }
+
+        [DeserializeAs(Name = "country_code")]
+        public string CountryCode { get; private set; }
+        
+        public double Latitude { get; private set; }
+
+        public double Longitude { get; private set; }
+
+        public string Website { get; private set; }
+
+        public List<Production> Invitations { get; private set; }
+
+        public List<Production> Releases { get; private set; }
+
+        public List<Competition> Competitions { get; private set; }
     }
 }

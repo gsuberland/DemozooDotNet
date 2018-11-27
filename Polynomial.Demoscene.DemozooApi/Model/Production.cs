@@ -4,10 +4,12 @@ using RestSharp.Deserializers;
 
 namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class Production
+    class Production : IDemozooApiReference
     {
         [DeserializeAs(Name = "url")]
         public string ApiUrl { get; private set; }
+
+        public Production FullData => DemozooApi.Dereference<Production>(this);
 
         [DeserializeAs(Name = "demozoo_url")]
         public string DemozooUrl { get; private set; }
