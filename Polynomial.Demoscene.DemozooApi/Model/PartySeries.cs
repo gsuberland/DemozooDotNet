@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class PartySeries
+    public class PartySeries
     {
 
     }

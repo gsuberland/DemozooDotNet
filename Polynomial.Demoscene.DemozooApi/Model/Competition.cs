@@ -4,7 +4,7 @@ using RestSharp.Deserializers;
 
 namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class Competition
+    public class Competition
     {
         public long ID { get; private set; }
 

@@ -2,7 +2,7 @@
 
 namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class CompetitionResult
+    public class CompetitionResult
     {
         public long Position { get; private set; }
 

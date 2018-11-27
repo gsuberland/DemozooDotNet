@@ -2,7 +2,7 @@
 
 namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class ReleaserReference : IDemozooApiReference
+    public class ReleaserReference : IDemozooApiReference
     {
         [DeserializeAs(Name = "url")]
         public string ApiUrl { get; private set; }

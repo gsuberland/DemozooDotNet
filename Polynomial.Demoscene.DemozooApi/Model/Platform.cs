@@ -2,7 +2,7 @@
 
 namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class Platform
+    public class Platform
     {
         [DeserializeAs(Name = "url")]
         public string ApiUrl { get; private set; }

@@ -2,7 +2,7 @@
 
 namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class Member
+    public class Member
     {
         [DeserializeAs(Name = "member")]
         public ReleaserReference MemberReference { get; private set; }

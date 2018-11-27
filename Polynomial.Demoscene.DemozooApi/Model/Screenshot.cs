@@ -2,7 +2,7 @@
 
 namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class Screenshot
+    public class Screenshot
     {
         [DeserializeAs(Name = "original_url")]
         public string OriginalUrl { get; private set; }

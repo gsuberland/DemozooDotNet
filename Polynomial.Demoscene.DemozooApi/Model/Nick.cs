@@ -1,6 +1,6 @@
 ﻿namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class Nick
+    public class Nick
     {
         public string Name { get; private set; }
 

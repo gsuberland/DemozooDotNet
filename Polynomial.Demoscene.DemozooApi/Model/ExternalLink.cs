@@ -2,7 +2,7 @@
 
 namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class ExternalLink
+    public class ExternalLink
     {
         [DeserializeAs(Name = "link_class")]
         public string LinkClass { get; private set; }

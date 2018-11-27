@@ -1,6 +1,6 @@
 ﻿namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class CompetitionPlacing
+    public class CompetitionPlacing
     {
         public long Position { get; private set; }
 

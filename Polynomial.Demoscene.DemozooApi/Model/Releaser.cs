@@ -3,7 +3,7 @@ using RestSharp.Deserializers;
 
 namespace Polynomial.Demoscene.DemozooApi.Model
 {
-    class Releaser
+    public class Releaser
     {
         [DeserializeAs(Name = "demozoo_url")]
         public string DemozooUrl { get; private set; }
