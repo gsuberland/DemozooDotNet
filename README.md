@@ -1,6 +1,6 @@
 # DemozooDotNet
 
-[![Build Status](https://travis-ci.com/gsuberland/DemozooDotNet.svg?branch=master)](https://travis-ci.com/gsuberland/DemozooDotNet)
+[![Build status](https://ci.appveyor.com/api/projects/status/dg9d90baw6fgdnfg/branch/master?svg=true)](https://ci.appveyor.com/project/gsuberland/demozoodotnet-petnk/branch/master)
 
 .NET API for Demozoo - http://demozoo.org/
 
