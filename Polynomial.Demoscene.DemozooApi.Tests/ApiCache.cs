@@ -11,6 +11,17 @@ namespace Polynomial.Demoscene.DemozooApi
         private readonly static ConcurrentDictionary<Tuple<Type, long>, object> _cache = new ConcurrentDictionary<Tuple<Type, long>, object>();
         private readonly static ConcurrentDictionary<Tuple<Type, long>, Lazy<object>> _lazyCache = new ConcurrentDictionary<Tuple<Type, long>, Lazy<object>>();
 
+        public static T Cache<T>(long id, Func<T> lazyGen) where T : class
+        {
+            var cached = Get<T>(id);
+
+            if (cached != null)
+                return cached;
+
+            Add<T>(id, lazyGen);
+            return Get<T>(id);
+        }
+
         public static void Add<T>(long id, T obj)
         {
             var key = new Tuple<Type, long>(typeof(T), id);
