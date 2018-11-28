@@ -23,12 +23,12 @@ namespace Polynomial.Demoscene.DemozooApi
 
         public static Party GetParty(long id)
         {
-            return GetGeneric<Party>("party", id);
+            return GetGeneric<Party>("parties", id);
         }
 
         public static Production GetProduction(long id)
         {
-            return GetGeneric<Production>("production", id);
+            return GetGeneric<Production>("productions", id);
         }
     }
 }
