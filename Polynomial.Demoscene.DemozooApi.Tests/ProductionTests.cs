@@ -10,6 +10,8 @@ namespace Polynomial.Demoscene.DemozooApi.Tests.DotNetCore
 {
     public class ProductionTests
     {
+        private const long InvalidProductionId = -1;
+
         private readonly ITestOutputHelper output;
 
         public ProductionTests(ITestOutputHelper output)
@@ -29,13 +31,12 @@ namespace Polynomial.Demoscene.DemozooApi.Tests.DotNetCore
             Assert.NotNull(ApiCache.Get<Production>(id));
         }
 
-        [Theory]
-        [InlineData(-1)]
-        public void TestProduction_NotFound(long id)
+        [Fact]
+        public void TestProduction_NotFound()
         {
             Assert.Throws<ApiDataNotFoundException>(() => 
             {
-                var prod = DemozooApi.GetProduction(id);
+                var prod = DemozooApi.GetProduction(InvalidProductionId);
             });
         }
 

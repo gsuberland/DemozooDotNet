@@ -11,6 +11,8 @@ namespace Polynomial.Demoscene.DemozooApi.Tests
 {
     public class ProductionListTests
     {
+        private const long InvalidPageId = -1;
+
         private readonly ITestOutputHelper output;
 
         public ProductionListTests(ITestOutputHelper output)
@@ -20,7 +22,7 @@ namespace Polynomial.Demoscene.DemozooApi.Tests
 
             ApiCache.Add(1, () => DemozooApi.GetProductions(1));
             ApiCache.Add(2, () => DemozooApi.GetProductions(2));
-            ApiCache.Add(69696969, () => DemozooApi.GetProductions(69696969));
+            ApiCache.Add(InvalidPageId, () => DemozooApi.GetProductions(InvalidPageId));
         }
 
         [Theory]
@@ -49,7 +51,7 @@ namespace Polynomial.Demoscene.DemozooApi.Tests
             var results = ApiCache.Get<ListResults<Production>>(id);
             var firstResult = results.Results.FirstOrDefault();
             Assert.NotNull(firstResult);
-            Assert.True(firstResult.ID != 0, "First result was 0");
+            Assert.True(firstResult.ID != 0, "First result had ID 0.");
         }
 
         [Fact]
@@ -57,7 +59,7 @@ namespace Polynomial.Demoscene.DemozooApi.Tests
         {
             Assert.Throws<ApiDataNotFoundException>(() =>
             {
-                var results = ApiCache.Get<ListResults<Production>>(69696969);
+                var results = ApiCache.Get<ListResults<Production>>(InvalidPageId);
             });
         }
     }
