@@ -1,14 +1,8 @@
 language: csharp
 mono: none
-dotnet: 2.1.101
-
-os:
-  - linux
-  - windows
-
+dotnet: 2.1.300
 install:
   - dotnet restore
-
 script:
   - dotnet build
   - dotnet test Polynomial.Demoscene.DemozooApi.Tests.DotNetCore/Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj
