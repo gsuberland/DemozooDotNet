@@ -9,18 +9,23 @@ init:
   # Good practice, because Windows line endings are different from Unix/Linux ones
   - git config --global core.autocrlf true
 install:
-  # Install repo specific stuff here
+  # nothing to install here... yet
 before_build:
   - sh: uname -a
   - dotnet --version
   - dotnet restore --verbosity m
 build_script:
+  # for Windows we just run build and it'll do all framework targets
   - cmd: dotnet build
+  # for Linux we can't target .NET Framework so we do two manual builds (core + standard)
   - sh: dotnet build -f netcoreapp2.1
+  - sh: dotnet build -f netstandard2.0
 after_build:
 test_script:
+  # on Windows we just run test and it'll test all framework targets
   - cmd: dotnet test Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  # on Linux we only run the test on .NET Core because xUnit doesn't support .NET Standard yet
   - sh: dotnet test -f netcoreapp2.1 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
 on_finish:
-  # any cleanup in here
+  # any cleanup in here. nothing atm
 deploy: off
