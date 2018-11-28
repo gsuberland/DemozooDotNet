@@ -1,5 +1,7 @@
 # DemozooDotNet
 
+[![Build Status](https://travis-ci.com/gsuberland/DemozooDotNet.svg?branch=master)](https://travis-ci.com/gsuberland/DemozooDotNet)
+
 .NET API for Demozoo - http://demozoo.org/
 
 Written for .NET Standard, should work on both .NET Framework and .NET Core on all supported platforms.
