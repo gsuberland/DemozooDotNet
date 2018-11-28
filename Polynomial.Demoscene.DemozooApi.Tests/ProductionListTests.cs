@@ -26,7 +26,7 @@ namespace Polynomial.Demoscene.DemozooApi.Tests
         [InlineData(2)]
         public void TestFetchProductionLists(long id)
         {
-            Assert.NotNull(ApiCache.Get<Production>(id));
+            Assert.NotNull(ApiCache.Get<ListResults<Production>>(id));
         }
     }
 }
