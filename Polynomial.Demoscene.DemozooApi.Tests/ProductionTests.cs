@@ -5,7 +5,6 @@ using Xunit.Abstractions;
 using Polynomial.Demoscene.DemozooApi;
 using Polynomial.Demoscene.DemozooApi.Model;
 using Polynomial.Demoscene.DemozooApi.Tests;
-using System.Collections;
 
 namespace Polynomial.Demoscene.DemozooApi.Tests.DotNetCore
 {
@@ -18,8 +17,8 @@ namespace Polynomial.Demoscene.DemozooApi.Tests.DotNetCore
             this.output = output;
             ApiCache.Output = output;
 
-            ApiCache.Add(1, DemozooApi.GetProduction(1));
-            ApiCache.Add(2, DemozooApi.GetProduction(2));
+            ApiCache.Add(1, () => DemozooApi.GetProduction(1));
+            ApiCache.Add(2, () => DemozooApi.GetProduction(2));
         }
 
         [Theory]
