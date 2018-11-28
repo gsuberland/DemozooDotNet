@@ -9,6 +9,7 @@ namespace Polynomial.Demoscene.DemozooApi
         public static ITestOutputHelper Output { get; set; }
 
         private readonly static ConcurrentDictionary<Tuple<Type, long>, object> _cache = new ConcurrentDictionary<Tuple<Type, long>, object>();
+        private readonly static ConcurrentDictionary<Tuple<Type, long>, Lazy<object>> _lazyCache = new ConcurrentDictionary<Tuple<Type, long>, Lazy<object>>();
 
         public static void Add<T>(long id, T obj)
         {
@@ -16,17 +17,27 @@ namespace Polynomial.Demoscene.DemozooApi
             _cache[key] = obj;
         }
 
+        public static void Add<T>(long id, Func<T> lazyGen) where T : class
+        {
+            var key = new Tuple<Type, long>(typeof(T), id);
+            _lazyCache[key] = new Lazy<object>(lazyGen);
+        }
+
         public static T Get<T>(long id)
         {
             var key = new Tuple<Type, long>(typeof(T), id);
 
-            if (!_cache.ContainsKey(key))
+            if (!_cache.ContainsKey(key) && !_lazyCache.ContainsKey(key))
             {
                 Output?.WriteLine("Cache miss on {0}/{1}", typeof(T).Name, id);
             }
 
-            return _cache.ContainsKey(key) ?
-                (T)_cache[key] : default(T);
+            if (_cache.ContainsKey(key))
+                return (T)_cache[key];
+            if (_lazyCache.ContainsKey(key))
+                return (T)_lazyCache[key].Value;
+
+            return default(T);
         }
     }
 }
