@@ -19,8 +19,8 @@ build_script:
   - sh: dotnet build -f netstandard2.0
 after_build:
 test_script:
-  - cmd dotnet test Polynomial.Demoscene.DemozooApi.Tests.DotNetCore/Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj
-  - sh dotnet test -f netstandard2.0 Polynomial.Demoscene.DemozooApi.Tests.DotNetCore/Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj
+  - cmd: dotnet test Polynomial.Demoscene.DemozooApi.Tests.DotNetCore/Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj
+  - sh: dotnet test -f netstandard2.0 Polynomial.Demoscene.DemozooApi.Tests.DotNetCore/Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj
 on_finish:
   # any cleanup in here
 deploy: off
