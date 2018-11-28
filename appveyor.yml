@@ -19,14 +19,21 @@ build_script:
   - cmd: dotnet build
   # for Linux we can't target .NET Framework so we do two manual builds (core + standard)
   - sh: dotnet build -f netcoreapp2.1
+  - sh: dotnet build -f netcoreapp2.0
   - sh: dotnet build -f netstandard2.0
 after_build:
 test_script:
   # on Windows we run tests on .NET Framwork and .NET Core (.NET Standard is not yet supported by xUnit)
   - cmd: dotnet test -f net472 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  - cmd: dotnet test -f net471 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  - cmd: dotnet test -f net462 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  - cmd: dotnet test -f net461 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  - cmd: dotnet test -f net452 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   - cmd: dotnet test -f netcoreapp2.1 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  - cmd: dotnet test -f netcoreapp2.0 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   # on Linux we only run the test on .NET Core (no .NET Framework and Standard isn't supported)
   - sh: dotnet test -f netcoreapp2.1 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  - sh: dotnet test -f netcoreapp2.0 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
 on_finish:
   # any cleanup in here. nothing atm
 deploy: off
