@@ -16,7 +16,7 @@ namespace Polynomial.Demoscene.DemozooApi.Model
 
         public ListResults<T> NextPage => string.IsNullOrEmpty(NextApiUrl) ? null : DemozooApi.GetListResults<T>(NextApiUrl);
 
-        public ListResults<T> PreviousPage => string.IsNullOrEmpty(NextApiUrl) ? null : DemozooApi.GetListResults<T>(PreviousApiUrl);
+        public ListResults<T> PreviousPage => string.IsNullOrEmpty(PreviousApiUrl) ? null : DemozooApi.GetListResults<T>(PreviousApiUrl);
 
         public List<T> Results { get; private set; }
     }
