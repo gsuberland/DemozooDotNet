@@ -16,11 +16,11 @@ before_build:
   - dotnet restore --verbosity m
 build_script:
   - cmd: dotnet build
-  - sh: dotnet build -f netstandard2.0
+  - sh: dotnet build -f netcoreapp2.1
 after_build:
 test_script:
   - cmd: dotnet test Polynomial.Demoscene.DemozooApi.Tests.DotNetCore/Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj
-  - sh: dotnet test -f netstandard2.0 Polynomial.Demoscene.DemozooApi.Tests.DotNetCore/Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj
+  - sh: dotnet test -f netcoreapp2.1 Polynomial.Demoscene.DemozooApi.Tests.DotNetCore/Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj
 on_finish:
   # any cleanup in here
 deploy: off
