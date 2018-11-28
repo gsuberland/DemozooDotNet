@@ -22,9 +22,10 @@ build_script:
   - sh: dotnet build -f netstandard2.0
 after_build:
 test_script:
-  # on Windows we just run test and it'll test all framework targets
-  - cmd: dotnet test Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
-  # on Linux we only run the test on .NET Core because xUnit doesn't support .NET Standard yet
+  # on Windows we run tests on .NET Framwork and .NET Core (.NET Standard is not yet supported by xUnit)
+  - cmd: dotnet test -f fx472 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  - cmd: dotnet test -f netcoreapp2.1 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  # on Linux we only run the test on .NET Core (no .NET Framework and Standard isn't supported)
   - sh: dotnet test -f netcoreapp2.1 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
 on_finish:
   # any cleanup in here. nothing atm
