@@ -17,6 +17,7 @@ namespace Polynomial.Demoscene.DemozooApi
         private static T GetGeneric<T>(string objectName, long id) where T : class, new()
         {
             var request = new RestRequest(objectName + @"/{id}/");
+            request.AddUrlSegment("id", id);
             var response = _client.Execute<T>(request);
             return response.Data;
         }
