@@ -8,6 +8,10 @@ Written for .NET Standard, should work on both .NET Framework and .NET Core on a
 
 This is currently a work in progress, but it fetches some data.
 
+## Documentation
+
+The easiest way to understand what data is available is to look at the API root - https://demozoo.org/api/v1/
+
 ## Examples
 
 ```c#
