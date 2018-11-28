@@ -19,26 +19,22 @@ namespace Polynomial.Demoscene.DemozooApi.Tests
         {
             this.output = output;
             ApiCache.Output = output;
-
-            ApiCache.Add(1, () => DemozooApi.GetProductions(1));
-            ApiCache.Add(2, () => DemozooApi.GetProductions(2));
-            ApiCache.Add(InvalidPageId, () => DemozooApi.GetProductions(InvalidPageId));
         }
 
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
-        public void TestProductionList_Fetch(long id)
+        public void TestProductionList_Fetch(long pageNum)
         {
-            Assert.NotNull(ApiCache.Get<ListResults<Production>>(id));
+            Assert.NotNull(ApiCache.Cache(pageNum, () => DemozooApi.GetProductions(pageNum)));
         }
 
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
-        public void TestProductionList_Length(long id)
+        public void TestProductionList_Length(long pageNum)
         {
-            var results = ApiCache.Get<ListResults<Production>>(id);
+            var results = ApiCache.Cache(pageNum, () => DemozooApi.GetProductions(pageNum));
             Assert.True(results.Count > 0, "Result count was zero.");
             Assert.NotEmpty(results.Results);
         }
@@ -46,9 +42,9 @@ namespace Polynomial.Demoscene.DemozooApi.Tests
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
-        public void TestProductionList_FirstResult(long id)
+        public void TestProductionList_FirstResult(long pageNum)
         {
-            var results = ApiCache.Get<ListResults<Production>>(id);
+            var results = ApiCache.Cache(pageNum, () => DemozooApi.GetProductions(pageNum));
             var firstResult = results.Results.FirstOrDefault();
             Assert.NotNull(firstResult);
             Assert.True(firstResult.ID != 0, "First result had ID 0.");
@@ -59,8 +55,33 @@ namespace Polynomial.Demoscene.DemozooApi.Tests
         {
             Assert.Throws<ApiDataNotFoundException>(() =>
             {
-                var results = ApiCache.Get<ListResults<Production>>(InvalidPageId);
+                var results = DemozooApi.GetProductions(InvalidPageId);
             });
+        }
+
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        public void TestProductionList_NextPage(long pageNum)
+        {
+            var results = ApiCache.Cache(pageNum, () => DemozooApi.GetProductions(pageNum));
+            Assert.NotNull(results.NextPage);
+        }
+
+        [Theory]
+        [InlineData(2)]
+        [InlineData(3)]
+        public void TestProductionList_PreviousPage(long pageNum)
+        {
+            var results = ApiCache.Cache(pageNum, () => DemozooApi.GetProductions(pageNum));
+            Assert.NotNull(results.PreviousPage);
+        }
+
+        [Fact]
+        public void TestProductionList_PreviousPageOnFirstPage()
+        {
+            var results = ApiCache.Cache(1, () => DemozooApi.GetProductions(1));
+            Assert.Null(results.PreviousPage);
         }
     }
 }

@@ -18,9 +18,6 @@ namespace Polynomial.Demoscene.DemozooApi.Tests.DotNetCore
         {
             this.output = output;
             ApiCache.Output = output;
-
-            ApiCache.Add(1, () => DemozooApi.GetProduction(1));
-            ApiCache.Add(2, () => DemozooApi.GetProduction(2));
         }
 
         [Theory]
@@ -28,7 +25,7 @@ namespace Polynomial.Demoscene.DemozooApi.Tests.DotNetCore
         [InlineData(2)]
         public void TestProduction_Fetch(long id)
         {
-            Assert.NotNull(ApiCache.Get<Production>(id));
+            Assert.NotNull(ApiCache.Cache(id, () => DemozooApi.GetProduction(id)));
         }
 
         [Fact]
@@ -45,7 +42,7 @@ namespace Polynomial.Demoscene.DemozooApi.Tests.DotNetCore
         [InlineData(2, "State of the Art")]
         public void TestProduction_CorrectTitle(long id, string title)
         {
-            var prod = ApiCache.Get<Production>(id);
+            var prod = ApiCache.Cache(id, () => DemozooApi.GetProduction(id));
             Assert.Equal(title, prod.Title);
         }
     }
