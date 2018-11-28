@@ -1,21 +1,24 @@
 version: '1.0.{build}'
-image: Visual Studio 2017
+image:
+  - Visual Studio 2017
+  - Ubuntu
 branches:
   only:
   - master
 init:
   # Good practice, because Windows line endings are different from Unix/Linux ones
-  - cmd: git config --global core.autocrlf true
+  - git config --global core.autocrlf true
 install:
   # Install repo specific stuff here
 before_build:
-  - cmd: dotnet --version
-  - cmd: dotnet restore --verbosity m
+  - sh: uname -a
+  - dotnet --version
+  - dotnet restore --verbosity m
 build_script:
-  - cmd: dotnet build
+  - dotnet build
 after_build:
 test_script:
-  - cmd: dotnet test Polynomial.Demoscene.DemozooApi.Tests.DotNetCore/Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj
+  - dotnet test Polynomial.Demoscene.DemozooApi.Tests.DotNetCore/Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj
 on_finish:
   # any cleanup in here
 deploy: off
