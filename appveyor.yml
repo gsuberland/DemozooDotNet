@@ -23,7 +23,7 @@ build_script:
 after_build:
 test_script:
   # on Windows we run tests on .NET Framwork and .NET Core (.NET Standard is not yet supported by xUnit)
-  - cmd: dotnet test -f fx472 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  - cmd: dotnet test -f net472 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   - cmd: dotnet test -f netcoreapp2.1 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   # on Linux we only run the test on .NET Core (no .NET Framework and Standard isn't supported)
   - sh: dotnet test -f netcoreapp2.1 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
