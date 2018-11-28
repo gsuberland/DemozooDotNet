@@ -24,22 +24,14 @@ namespace Polynomial.Demoscene.DemozooApi.Tests.DotNetCore
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
-        public void TestFetchProduction(long id)
+        public void TestProduction_Fetch(long id)
         {
             Assert.NotNull(ApiCache.Get<Production>(id));
-        }
-        
-        [Theory]
-        [InlineData(696969)]
-        public void TestMissingProduction(long id)
-        {
-            // this should be null because we don't cache the production above (we haven't asked for it at all)
-            Assert.Null(ApiCache.Get<Production>(id));
         }
 
         [Theory]
         [InlineData(-1)]
-        public void TestNotFoundProduction(long id)
+        public void TestProduction_NotFound(long id)
         {
             Assert.Throws<ApiDataNotFoundException>(() => 
             {
@@ -50,7 +42,7 @@ namespace Polynomial.Demoscene.DemozooApi.Tests.DotNetCore
         [Theory]
         [InlineData(1, "Rob Is Jarig")]
         [InlineData(2, "State of the Art")]
-        public void CorrectTitle(long id, string title)
+        public void TestProduction_CorrectTitle(long id, string title)
         {
             var prod = ApiCache.Get<Production>(id);
             Assert.Equal(title, prod.Title);
