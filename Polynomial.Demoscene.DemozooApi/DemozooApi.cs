@@ -14,10 +14,29 @@ namespace Polynomial.Demoscene.DemozooApi
             return response.Data;
         }
 
-        private static T GetGeneric<T>(string objectName, long id) where T : class, new()
+        internal static ListResults<T> GetListResults<T>(string url) where T : class, new()
+        {
+            var request = new RestRequest(url);
+            var response = _client.Execute<ListResults<T>>(request);
+            return response.Data;
+        }
+
+        private static T GetObject<T>(string objectName, long id) where T : class, new()
         {
             var request = new RestRequest(objectName + @"/{id}/");
             request.AddUrlSegment("id", id);
+            return GetGeneric<T>(request);
+        }
+
+        private static ListResults<T> GetList<T>(string objectName, long pageNumber) where T : class, new()
+        {
+            var request = new RestRequest(objectName + @"/?page={pageNum}");
+            request.AddUrlSegment("pageNum", pageNumber);
+            return GetGeneric<ListResults<T>>(request);
+        }
+
+        private static T GetGeneric<T>(RestRequest request) where T : class, new()
+        {
             var response = _client.Execute<T>(request);
             if (!response.IsSuccessful)
             {
@@ -42,14 +61,19 @@ namespace Polynomial.Demoscene.DemozooApi
             return response.Data;
         }
 
+        public static ListResults<Production> GetProductions(long pageNumber)
+        {
+            return GetList<Production>("productions", pageNumber);
+        }
+
         public static Party GetParty(long id)
         {
-            return GetGeneric<Party>("parties", id);
+            return GetObject<Party>("parties", id);
         }
 
         public static Production GetProduction(long id)
         {
-            return GetGeneric<Production>("productions", id);
+            return GetObject<Production>("productions", id);
         }
     }
 }
