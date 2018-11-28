@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polynomial.Demoscene.DemozooApi", "Polynomial.Demoscene.DemozooApi\Polynomial.Demoscene.DemozooApi.csproj", "{C146326E-608D-4AE2-AA93-BF2F4184C52F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polynomial.Demoscene.DemozooApi", "Polynomial.Demoscene.DemozooApi\Polynomial.Demoscene.DemozooApi.csproj", "{C146326E-608D-4AE2-AA93-BF2F4184C52F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polynomial.Demoscene.DemozooApi.Tests.DotNetCore", "Polynomial.Demoscene.DemozooApi.Tests.DotNetCore\Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj", "{20C47F38-1B17-428D-A176-201F3685BD88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polynomial.Demoscene.DemozooApi.Tests.DotNetCore", "Polynomial.Demoscene.DemozooApi.Tests.DotNetCore\Polynomial.Demoscene.DemozooApi.Tests.DotNetCore.csproj", "{20C47F38-1B17-428D-A176-201F3685BD88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
