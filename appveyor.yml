@@ -1,7 +1,7 @@
 version: '1.0.{build}'
 image:
   - Ubuntu
-  - Visual Studio 2017
+  - Visual Studio 2019
 branches:
   only:
   - master
@@ -18,20 +18,29 @@ build_script:
   # for Windows we just run build and it'll do all framework targets
   - cmd: dotnet build
   # for Linux we can't target .NET Framework so we do two manual builds (core + standard)
+  - sh: dotnet build -f net6.0
+  - sh: dotnet build -f net5.0
+  - sh: dotnet build -f netcoreapp3.1
+  - sh: dotnet build -f netcoreapp3.0
+  - sh: dotnet build -f netcoreapp2.2
   - sh: dotnet build -f netcoreapp2.1
   - sh: dotnet build -f netcoreapp2.0
-  - sh: dotnet build -f netstandard2.0
+  - sh: dotnet build -f netstandard2.1
 after_build:
 test_script:
   # on Windows we run tests on .NET Framwork and .NET Core (.NET Standard is not yet supported by xUnit)
+  - cmd: dotnet test -f net48 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   - cmd: dotnet test -f net472 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   - cmd: dotnet test -f net471 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   - cmd: dotnet test -f net462 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   - cmd: dotnet test -f net461 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
-  - cmd: dotnet test -f net452 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  - cmd: dotnet test -f netcoreapp3.1 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   - cmd: dotnet test -f netcoreapp2.1 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   - cmd: dotnet test -f netcoreapp2.0 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   # on Linux we only run the test on .NET Core (no .NET Framework and Standard isn't supported)
+  - sh: dotnet test -f netcoreapp3.1 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  - sh: dotnet test -f netcoreapp3.0 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
+  - sh: dotnet test -f netcoreapp2.2 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   - sh: dotnet test -f netcoreapp2.1 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
   - sh: dotnet test -f netcoreapp2.0 Polynomial.Demoscene.DemozooApi.Tests/Polynomial.Demoscene.DemozooApi.Tests.csproj
 on_finish:
