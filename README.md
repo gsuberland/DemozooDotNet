@@ -4,6 +4,8 @@
 
 .NET API for Demozoo - http://demozoo.org/
 
+This interface is not exhaustive, but it fetches most of the production and party data. Feature request issues and PRs welcome for improvements.
+
 Written for .NET Standard with support for the following framework targets:
 
 * .NET Core 2.1 (netcoreapp2.1)
@@ -16,8 +18,6 @@ Written for .NET Standard with support for the following framework targets:
 * .NET Framework 4.5.2 (net452)
 
 Windows 10 and Ubuntu are officially supported.
-
-This is currently a work in progress, but it fetches most of the production and party data already.
 
 ## Dependencies
 
