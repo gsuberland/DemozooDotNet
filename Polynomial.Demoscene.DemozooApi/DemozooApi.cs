@@ -30,8 +30,8 @@ namespace Polynomial.Demoscene.DemozooApi
 
         private static ListResults<T> GetList<T>(string objectName, long pageNumber) where T : class, new()
         {
-            var request = new RestRequest(objectName + @"/?page={pageNum}");
-            request.AddUrlSegment("pageNum", pageNumber);
+            var request = new RestRequest(objectName + @"/");
+            request.AddQueryParameter("page", pageNumber.ToString());
             return GetGeneric<ListResults<T>>(request);
         }
 
