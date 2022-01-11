@@ -8,7 +8,6 @@ This interface is not exhaustive, but it fetches most of the production and part
 
 Written for .NET Standard with support for the following framework targets:
 
-* .NET 6.0 (net6.0)
 * .NET 5.0 (net5.0)
 * .NET Core 3.1 (netcoreapp3.1)
 * .NET Core 3.0 (netcoreapp3.0)
