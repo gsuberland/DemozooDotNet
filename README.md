@@ -14,7 +14,7 @@ Written for .NET Standard with support for the following framework targets:
 * .NET Core 3.0 (netcoreapp3.0)
 * .NET Core 2.1 (netcoreapp2.1)
 * .NET Core 2.0 (netcoreapp2.0)
-* .NET Standard 2.0 (netstandard2.1)
+* .NET Standard 2.1 (netstandard2.1)
 * .NET Standard 2.0 (netstandard2.0)
 * .NET Framework 4.8 (net48)
 * .NET Framework 4.7.2 (net472)
