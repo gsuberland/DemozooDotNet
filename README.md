@@ -8,14 +8,19 @@ This interface is not exhaustive, but it fetches most of the production and part
 
 Written for .NET Standard with support for the following framework targets:
 
+* .NET 6.0 (net6.0)
+* .NET 5.0 (net5.0)
+* .NET Core 3.1 (netcoreapp3.1)
+* .NET Core 3.0 (netcoreapp3.0)
 * .NET Core 2.1 (netcoreapp2.1)
 * .NET Core 2.0 (netcoreapp2.0)
+* .NET Standard 2.0 (netstandard2.1)
 * .NET Standard 2.0 (netstandard2.0)
+* .NET Framework 4.8 (net48)
 * .NET Framework 4.7.2 (net472)
 * .NET Framework 4.7.1 (net471)
 * .NET Framework 4.6.2 (net462)
 * .NET Framework 4.6.1 (net461)
-* .NET Framework 4.5.2 (net452)
 
 Windows 10 and Ubuntu are officially supported.
 
